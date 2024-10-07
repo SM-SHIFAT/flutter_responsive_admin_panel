@@ -4,6 +4,8 @@ A new Flutter project.
 
 ## Getting Started
 
+inspired from: https://github.com/abuanwar072/Flutter-Responsive-Admin-Panel-or-Dashboard/blob/master/lib/main.dart
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

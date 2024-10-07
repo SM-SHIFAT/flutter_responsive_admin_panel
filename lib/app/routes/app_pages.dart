@@ -19,11 +19,57 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.DASHBOARD,
-      page: () => const DashboardView(),
-      binding: DashboardBinding(),
+      // children: [
+      //   GetPage(
+      //       name: _Paths.DASHBOARD,
+      //       page: () => const DashboardView(),
+      //       bindings: [
+      //         DashboardBinding(),
+      //         //  HomeBinding(),
+      //       ]),
+      //   GetPage(
+      //     name: _Paths.TRANSACTION,
+      //     page: () => DemopagesView(
+      //       text: "Transaction",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.TASK,
+      //     page: () => DemopagesView(
+      //       text: "Task",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.DOCUMENT,
+      //     page: () => DemopagesView(
+      //       text: "Document",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.STORE,
+      //     page: () => DemopagesView(
+      //       text: "Store",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.NOTIFICATION,
+      //     page: () => DemopagesView(
+      //       text: "Notification",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.PROFILE,
+      //     page: () => DemopagesView(
+      //       text: "Profile",
+      //     ),
+      //   ),
+      //   GetPage(
+      //     name: _Paths.SETTINGS,
+      //     page: () => DemopagesView(
+      //       text: "Settings",
+      //     ),
+      //   ),
+      // ]
     ),
   ];
 }

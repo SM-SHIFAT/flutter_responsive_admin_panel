@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../data/constrains.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class SideMenu extends StatelessWidget {
@@ -10,7 +11,7 @@ class SideMenu extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final controller = Get.find<HomeController>();
+  final controller = Get.put<HomeController>(HomeController());
 
   void closeDrawer() {
     if (controller.scaffoldKey.currentState?.isDrawerOpen ?? false) {
@@ -20,103 +21,113 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-            child: Image.asset("assets/images/logo.png"),
-          ),
-          DrawerListTile(
-            title: "Dashboard",
-            selected: controller.currentDrawerIndex.value == 0,
-            svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 0) {
-                controller.setDrawerIndex(0);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Transaction",
-            selected: controller.currentDrawerIndex.value == 1,
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 1) {
-                controller.setDrawerIndex(1);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Task",
-            selected: controller.currentDrawerIndex.value == 2,
-            svgSrc: "assets/icons/menu_task.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 2) {
-                controller.setDrawerIndex(2);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Documents",
-            selected: controller.currentDrawerIndex.value == 3,
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 3) {
-                controller.setDrawerIndex(3);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Store",
-            selected: controller.currentDrawerIndex.value == 4,
-            svgSrc: "assets/icons/menu_store.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 4) {
-                controller.setDrawerIndex(4);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Notification",
-            selected: controller.currentDrawerIndex.value == 5,
-            svgSrc: "assets/icons/menu_notification.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 5) {
-                controller.setDrawerIndex(5);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Profile",
-            selected: controller.currentDrawerIndex.value == 6,
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 6) {
-                controller.setDrawerIndex(6);
-                closeDrawer();
-              }
-            },
-          ),
-          DrawerListTile(
-            title: "Settings",
-            selected: controller.currentDrawerIndex.value == 7,
-            svgSrc: "assets/icons/menu_setting.svg",
-            press: () {
-              if (controller.currentDrawerIndex.value != 7) {
-                controller.setDrawerIndex(7);
-                closeDrawer();
-              }
-            },
-          ),
-        ],
-      ),
-    );
+    return Obx(() {
+      return Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Image.asset("assets/images/logo.png"),
+            ),
+            DrawerListTile(
+              title: "Dashboard",
+              selected: controller.currentDrawerIndex.value == 0,
+              svgSrc: "assets/icons/menu_dashboard.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 0) {
+                  controller.setDrawerIndex(0);
+                  closeDrawer();
+                  Get.toNamed(Routes.DASHBOARD, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Transaction",
+              selected: controller.currentDrawerIndex.value == 1,
+              svgSrc: "assets/icons/menu_tran.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 1) {
+                  controller.setDrawerIndex(1);
+                  closeDrawer();
+                  Get.toNamed(Routes.TRANSACTION, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Task",
+              selected: controller.currentDrawerIndex.value == 2,
+              svgSrc: "assets/icons/menu_task.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 2) {
+                  controller.setDrawerIndex(2);
+                  closeDrawer();
+                  Get.toNamed(Routes.TASK, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Documents",
+              selected: controller.currentDrawerIndex.value == 3,
+              svgSrc: "assets/icons/menu_doc.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 3) {
+                  controller.setDrawerIndex(3);
+                  closeDrawer();
+                  Get.toNamed(Routes.DOCUMENT, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Store",
+              selected: controller.currentDrawerIndex.value == 4,
+              svgSrc: "assets/icons/menu_store.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 4) {
+                  controller.setDrawerIndex(4);
+                  closeDrawer();
+                  Get.toNamed(Routes.STORE, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Notification",
+              selected: controller.currentDrawerIndex.value == 5,
+              svgSrc: "assets/icons/menu_notification.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 5) {
+                  controller.setDrawerIndex(5);
+                  closeDrawer();
+                  Get.toNamed(Routes.NOTIFICATION, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Profile",
+              selected: controller.currentDrawerIndex.value == 6,
+              svgSrc: "assets/icons/menu_profile.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 6) {
+                  controller.setDrawerIndex(6);
+                  closeDrawer();
+                  Get.toNamed(Routes.PROFILE, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
+              title: "Settings",
+              selected: controller.currentDrawerIndex.value == 7,
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 7) {
+                  controller.setDrawerIndex(7);
+                  closeDrawer();
+                  Get.toNamed(Routes.SETTINGS, id: 1);
+                }
+              },
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 
