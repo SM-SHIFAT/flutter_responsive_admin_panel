@@ -41,6 +41,18 @@ class SideMenu extends StatelessWidget {
               },
             ),
             DrawerListTile(
+              title: "Report",
+              selected: controller.currentDrawerIndex.value == 8,
+              svgSrc: "assets/icons/menu_tran.svg",
+              press: () {
+                if (controller.currentDrawerIndex.value != 8) {
+                  controller.setDrawerIndex(8);
+                  closeDrawer();
+                  Get.toNamed(Routes.REPORT, id: 1);
+                }
+              },
+            ),
+            DrawerListTile(
               title: "Transaction",
               selected: controller.currentDrawerIndex.value == 1,
               svgSrc: "assets/icons/menu_tran.svg",

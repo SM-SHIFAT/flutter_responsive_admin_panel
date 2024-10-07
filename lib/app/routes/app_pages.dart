@@ -6,6 +6,8 @@ import '../modules/demopages/bindings/demopages_binding.dart';
 import '../modules/demopages/views/demopages_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/report/bindings/report_binding.dart';
+import '../modules/report/views/report_view.dart';
 
 part 'app_routes.dart';
 
@@ -71,5 +73,10 @@ class AppPages {
       //   ),
       // ]
     ),
+    // GetPage(
+    //   name: _Paths.REPORT,
+    //   page: () => const ReportView(),
+    //   binding: ReportBinding(),
+    // ),
   ];
 }

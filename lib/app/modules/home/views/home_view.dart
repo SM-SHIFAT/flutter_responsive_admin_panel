@@ -7,6 +7,8 @@ import '../../../routes/app_pages.dart';
 import '../../dashboard/bindings/dashboard_binding.dart';
 import '../../dashboard/views/dashboard_view.dart';
 import '../../demopages/views/demopages_view.dart';
+import '../../report/bindings/report_binding.dart';
+import '../../report/views/report_view.dart';
 import '../controllers/home_controller.dart';
 import 'side_menu.dart';
 
@@ -192,7 +194,16 @@ class RapidNavigatorManager extends StatelessWidget {
               text: "Settings",
             ),
           );
+        } else if (routeSettings.name == Routes.REPORT) {
+          return GetPageRoute(
+            transition: Transition.fade,
+            routeName: Routes.REPORT,
+            title: 'Report Page',
+            page: () => ReportView(),
+            binding: ReportBinding(),
+          );
         }
+
         return null;
       },
     );
