@@ -9,6 +9,7 @@ import '../../dashboard/views/components/my_fields.dart';
 import '../../dashboard/views/components/recent_files.dart';
 import '../../dashboard/views/components/storage_details.dart';
 import '../controllers/report_controller.dart';
+import 'components.dart/bar_chart.dart';
 import 'components.dart/line_chart.dart';
 import 'components.dart/pie_chart.dart';
 
@@ -38,21 +39,18 @@ class ReportView extends GetView<ReportController> {
                   Expanded(
                     child: Column(
                       children: [
-                        //  MyFiles(),
-                        // SizedBox(height: defaultPadding),
                         PieChartWidget(),
                         if (Responsive.isMobile(context))
                           SizedBox(height: defaultPadding),
-                        if (Responsive.isMobile(context)) PieChartWidget(),
+                        if (Responsive.isMobile(context)) BarChartWidget(),
                       ],
                     ),
                   ),
                   if (!Responsive.isMobile(context))
                     SizedBox(width: defaultPadding),
-                  // On Mobile means if the screen is less than 850 we don't want to show it
                   if (!Responsive.isMobile(context))
                     Expanded(
-                      child: PieChartWidget(),
+                      child: BarChartWidget(),
                     ),
                 ],
               ),

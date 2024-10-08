@@ -67,85 +67,48 @@ class _PieChartWidgetState extends State<PieChartWidget> {
           Row(
             children: [
               Expanded(
+                flex: 3,
                 child: SizedBox(
                   height: 200,
-                  child: Expanded(
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: PieChart(
-                        PieChartData(
-                          sectionsSpace: 0,
-                          centerSpaceRadius: 40,
-                          sections: showingSections(),
-                          borderData: FlBorderData(
-                            show: false,
-                          ),
-                          pieTouchData: PieTouchData(
-                            touchCallback:
-                                (FlTouchEvent event, pieTouchResponse) {
-                              setState(() {
-                                if (!event.isInterestedForInteractions ||
-                                    pieTouchResponse == null ||
-                                    pieTouchResponse.touchedSection == null) {
-                                  touchedIndex = -1;
-                                  return;
-                                }
-                                touchedIndex = pieTouchResponse
-                                    .touchedSection!.touchedSectionIndex;
-                              });
-                            },
-                          ),
-                        ),
+                  child: PieChart(
+                    PieChartData(
+                      sectionsSpace: 0,
+                      centerSpaceRadius: 40,
+                      sections: showingSections(),
+                      borderData: FlBorderData(
+                        show: false,
+                      ),
+                      pieTouchData: PieTouchData(
+                        touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                          setState(() {
+                            if (!event.isInterestedForInteractions ||
+                                pieTouchResponse == null ||
+                                pieTouchResponse.touchedSection == null) {
+                              touchedIndex = -1;
+                              return;
+                            }
+                            touchedIndex = pieTouchResponse
+                                .touchedSection!.touchedSectionIndex;
+                          });
+                        },
                       ),
                     ),
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: List.generate(monthNames.length, (i) {
-                  return Indicator(
-                    color: getColor(i),
-                    text: monthNames[i],
-                    isSquare: true,
-                  );
-                }),
-
-                // <Widget>[
-                //   Indicator(
-                //     color: Colors.red,
-                //     text: 'First',
-                //     isSquare: true,
-                //   ),
-                //   SizedBox(
-                //     height: 4,
-                //   ),
-                //   Indicator(
-                //     color: Colors.red,
-                //     text: 'Second',
-                //     isSquare: true,
-                //   ),
-                //   SizedBox(
-                //     height: 4,
-                //   ),
-                //   Indicator(
-                //     color: Colors.red,
-                //     text: 'Third',
-                //     isSquare: true,
-                //   ),
-                //   SizedBox(
-                //     height: 4,
-                //   ),
-                //   Indicator(
-                //     color: Colors.red,
-                //     text: 'Fourth',
-                //     isSquare: true,
-                //   ),
-                //   SizedBox(
-                //     height: 18,
-                //   ),
-                // ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: List.generate(monthNames.length, (i) {
+                    return Indicator(
+                      color: getColor(i),
+                      text: monthNames[i],
+                      isSquare: true,
+                      isSelected: touchedIndex == i,
+                    );
+                  }),
+                ),
               ),
             ],
           ),
@@ -203,20 +166,24 @@ class Indicator extends StatelessWidget {
     required this.isSquare,
     this.size = 8,
     this.textColor,
+    this.isSelected,
+    this.selectedSize = 12,
   });
   final Color color;
   final String text;
   final bool isSquare;
   final double size;
+  final double selectedSize;
   final Color? textColor;
+  final bool? isSelected;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Container(
-          width: size,
-          height: size,
+          width: isSelected ?? false ? selectedSize : size,
+          height: isSelected ?? false ? selectedSize : size,
           decoration: BoxDecoration(
             shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
             color: color,
@@ -228,8 +195,9 @@ class Indicator extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
+            fontSize: isSelected ?? false ? 14 : 12,
+            fontWeight:
+                isSelected ?? false ? FontWeight.bold : FontWeight.normal,
             color: textColor,
           ),
         )
