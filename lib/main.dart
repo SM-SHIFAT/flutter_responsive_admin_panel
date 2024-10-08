@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     GetMaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       title: 'Responsive Admin Dashboard',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: bgColor,
@@ -21,4 +23,13 @@ void main() {
       getPages: AppPages.routes,
     ),
   );
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

@@ -16,7 +16,14 @@ class TransactionView extends GetView<TransactionController> {
         children: [
           Header(),
           SizedBox(height: defaultPadding),
-          Expanded(child: TransactionDataTable()),
+          Expanded(
+              child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TransactionDataTable(),
+              ],
+            ),
+          )),
           SizedBox(height: defaultPadding),
         ],
       ),
