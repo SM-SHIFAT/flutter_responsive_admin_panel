@@ -9,6 +9,8 @@ import '../../dashboard/views/dashboard_view.dart';
 import '../../demopages/views/demopages_view.dart';
 import '../../report/bindings/report_binding.dart';
 import '../../report/views/report_view.dart';
+import '../../transaction/bindings/transaction_binding.dart';
+import '../../transaction/views/transaction_view.dart';
 import '../controllers/home_controller.dart';
 import 'side_menu.dart';
 
@@ -145,9 +147,8 @@ class RapidNavigatorManager extends StatelessWidget {
             transition: Transition.fade,
             routeName: Routes.TRANSACTION,
             title: 'Transaction Page',
-            page: () => DemopagesView(
-              text: "Transaction",
-            ),
+            page: () => TransactionView(),
+            binding: TransactionBinding(),
           );
         } else if (routeSettings.name == Routes.TASK) {
           return GetPageRoute(

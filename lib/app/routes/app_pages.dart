@@ -8,6 +8,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/report/bindings/report_binding.dart';
 import '../modules/report/views/report_view.dart';
+import '../modules/transaction/bindings/transaction_binding.dart';
+import '../modules/transaction/views/transaction_view.dart';
 
 part 'app_routes.dart';
 
@@ -77,6 +79,11 @@ class AppPages {
     //   name: _Paths.REPORT,
     //   page: () => const ReportView(),
     //   binding: ReportBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.TRANSACTION,
+    //   page: () => const TransactionView(),
+    //   binding: TransactionBinding(),
     // ),
   ];
 }
