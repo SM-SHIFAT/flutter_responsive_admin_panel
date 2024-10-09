@@ -6,8 +6,52 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class ReportController extends GetxController {
-  RxList<FlSpot> chartData = <FlSpot>[].obs;
-  RxList<int> times = <int>[].obs;
+  RxList<FlSpot> chartData = <FlSpot>[
+    FlSpot(0, 0),
+    FlSpot(1, 0),
+    FlSpot(2, 0),
+    FlSpot(3, 0),
+    FlSpot(4, 0),
+    FlSpot(5, 0),
+    FlSpot(6, 0),
+    FlSpot(7, 0),
+    FlSpot(8, 0),
+    FlSpot(9, 0),
+    FlSpot(10, 0),
+    FlSpot(11, 0),
+    FlSpot(12, 0),
+    FlSpot(13, 0),
+    FlSpot(14, 0),
+    FlSpot(15, 0),
+    FlSpot(16, 0),
+    FlSpot(17, 0),
+    FlSpot(18, 0),
+    FlSpot(19, 0),
+    FlSpot(20, 0),
+  ].obs;
+  RxList<int> times = <int>[
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+  ].obs;
   late StreamSubscription<int> subscription;
   Random random = Random();
 
@@ -38,7 +82,7 @@ class ReportController extends GetxController {
 
   Stream<int> generateRandomNumberStream() {
     Random random = Random();
-    return Stream<int>.periodic(Duration(seconds: 3), (int count) {
+    return Stream<int>.periodic(Duration(seconds: 1), (int count) {
       return random.nextInt(100); // Generate a random number between 0 and 99
     });
   }

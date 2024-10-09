@@ -77,16 +77,19 @@ class LineChartWidget extends StatelessWidget {
                   ),
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
+                        interval: 2,
                         showTitles: true,
-                        reservedSize: 20,
+                        reservedSize: 30,
                         getTitlesWidget: (value, meta) {
                           // Show the time label for each data point
                           int index = value.toInt();
                           if (index >= 0 && index < times.length) {
                             return Text(
-                                DateFormat.Hm().format(
-                                    DateTime.fromMillisecondsSinceEpoch(
-                                        times[index])),
+                                times[index] == 0
+                                    ? ""
+                                    : DateFormat.Hm().format(
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                            times[index])),
                                 style: TextStyle(fontSize: 12));
                           }
                           return Container();
